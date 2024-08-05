@@ -6,3 +6,7 @@
   display: ;
   align-items: center;
   justify-content: center;
+}
+.foto{
+  border-radius:10px; 
+}
