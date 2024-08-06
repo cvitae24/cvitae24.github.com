@@ -8,6 +8,15 @@
   justify-content: center;
 }
 .foto{
-  border-radius:10px;
-  
+  /*border-radius:10px;*/
+  border-top-left-radius: 0em;
+  border-top-right-radius: 2em;
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 0em;*
+}
+
+.borde{
+
+  border-bottom: solid 2px #db4648;
+  padding-bottom: 4px;
 }
