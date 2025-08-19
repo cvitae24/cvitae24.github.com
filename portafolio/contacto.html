@@ -31,7 +31,46 @@
     <main class="contenido-principal contenedor">
         <h2 class="text-center">Contacto</h2>
 
-        <form> <label for="nombre">Nombre:</label><input type="text" id="nombre" placeholder="Ingresa Tu Nombre"></form>
+        <form action="shernandezba@infinitummail.com" class="formulario"> 
+            <fieldset><legend>Tus Datos</legend>
+            <div class="campo"><label for="nombre">Nombre:</label><input type="text" id="nombre" placeholder="Ingresa Tu Nombre" required></div>
+            <div class="campo"><label for="asunto">Asunto:</label><input type="text" id="asunto" placeholder="Tu Asunto" required></div>
+            <div class="campo"><label for="tel">Teléfono:</label><input type="tel" id="tel" placeholder="Teléfono"></div>
+            <div class="campo"><label for="email">E-mail:</label><input type="email" id="email" placeholder="E-mail"></div>
+            <div class="campo"><label for="fecha">Fecha:</label><input type="date" id="fecha" placeholder="Fecha"></div>
+            <div class="campo"><label for="msj">Mensaje:</label><textarea name="" id="msj" rows="10" cols="20"></textarea></div>
+            </fieldset>
+
+            <fieldset><legend>País</legend>
+                <div class="campo">
+                    <label for="pais">País</label>
+                     <select name="" id="pais">
+                        <option value="" disabled>---Selecciona El País---</option>
+                        <option value="MX" selected>México</option>
+                        <option value="PR">Perú</option>
+                        <option value="USA">Estados Unidos</option>
+                        <option value="CO">Colombia</option>
+                        <option value="AR">Argentina</option>
+                        <option value="ES">España</option>
+                     </select></div>
+            </fieldset>
+            <fieldset>
+                <legend>Información</legend>
+                <div class="campo"><label for="cliente">Cliente</label><input type="radio" id="cliente" name="tipo" value="cliente"></div>
+                <div class="campo"><label for="proveedor">Proveedor</label><input type="radio" id="proveedor" name="tipo" value="proveedor"></div>
+            <div class="campo"> <label for="categoria">Categoría de Interés</label>
+            <input list="categorias" name="categorias">
+            <datalist id="categorias">
+                <option value="Cocina">
+                <option value="Exterior">
+                <option value="Recamaras">
+                <option value="Oficina">
+                <option value="Televisión">
+            </datalist>
+            </div>
+            </fieldset>
+        <input type="submit" value="Enviar Formulario" class="btn">
+        </form>
         
     </main>
 
