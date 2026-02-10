@@ -13,19 +13,16 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text-main); line-height: 1.5; }
         
-        /* Contenedor principal */
         #cv-content { padding: 40px; max-width: 850px; margin: 0 auto; background-color: var(--bg); }
         
-        /* Estilos para el PDF (Fondo blanco) */
         .pdf-mode { background-color: white !important; color: #1a1a1a !important; padding: 20px !important; }
         .pdf-mode h1, .pdf-mode h2, .pdf-mode h3 { color: #111 !important; }
         .pdf-mode .card { background: #f9fafb !important; border: 1px solid #e5e7eb !important; color: #374151 !important; }
         .pdf-mode .date { color: #6b7280 !important; }
         .pdf-mode .subtitle { color: #2563eb !important; }
+        .pdf-mode a { color: #1a1a1a !important; text-decoration: none; }
 
         header { text-align: center; padding-bottom: 30px; border-bottom: 2px solid var(--primary); margin-bottom: 30px; }
-        .profile-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 15px; }
-        
         h1 { font-size: 2.2rem; margin-bottom: 5px; }
         .subtitle { color: var(--primary); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         
@@ -48,6 +45,9 @@
             padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.4); cursor: pointer; border: none; z-index: 1000;
         }
+        
+        header a { color: var(--text-main); text-decoration: none; transition: 0.3s; }
+        header a:hover { color: var(--primary); }
     </style>
 </head>
 <body>
@@ -61,7 +61,8 @@
             <h1>Saúl Hernández Barrientos</h1>
             <p class="subtitle">Ingeniero en Sistemas Computacionales</p>
             <p style="font-size: 0.9rem; margin-top: 10px;">
-                <i class="fas fa-envelope"></i> cvitae24@github.io | <i class="fab fa-linkedin"></i> saúl-hernández-327b0b1ba
+                <a href="mailto:shernandezba@infinitummail.com"><i class="fas fa-envelope"></i> shernandezba@infinitummail.com</a> | 
+                <a href="https://www.linkedin.com/in/sa%C3%BAl-hern%C3%A1ndez-327b0b1ba/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </p>
         </header>
 
@@ -71,7 +72,7 @@
             <div class="card">
                 <h3>Mesa de Ayuda - Cinemex <span class="badge">ACTUAL</span></h3>
                 <span class="date">2025 - Presente | Grupo SICCOB</span>
-                <p style="font-size: 0.9rem;">Soporte técnico y gestión de incidentes en infraestructura de cines.</p>
+                <p style="font-size: 0.9rem;">Soporte técnico integral y gestión de incidencias en infraestructura de cines.</p>
             </div>
 
             <div class="card">
@@ -132,19 +133,16 @@
     <script>
         function generatePDF() {
             const element = document.getElementById('cv-content');
-            
-            // 1. Aplicamos clase "Modo PDF" (Fondo Blanco)
             element.classList.add('pdf-mode');
 
             const options = {
-                margin: 5,
+                margin: 8,
                 filename: 'CV_Saul_Hernandez_Barrientos.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, useCORS: true },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
 
-            // 2. Generamos el PDF y al terminar quitamos la clase para que la web siga siendo oscura
             html2pdf().set(options).from(element).save().then(() => {
                 element.classList.remove('pdf-mode');
             });
