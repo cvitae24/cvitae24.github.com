@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saúl Hernández | CV Web</title>
+    <title>Saúl Hernández | CV Profesional</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -11,113 +11,120 @@
     <style>
         :root { --primary: #3b82f6; --bg: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-dim: #94a3b8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text-main); line-height: 1.5; }
         
-        /* Contenedor que se convertirá en PDF */
-        #cv-content { padding: 40px; max-width: 900px; margin: 0 auto; background-color: var(--bg); }
+        /* Contenedor principal */
+        #cv-content { padding: 40px; max-width: 850px; margin: 0 auto; background-color: var(--bg); }
         
-        header { text-align: center; padding-bottom: 40px; }
-        .profile-img { width: 140px; height: 140px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 15px; }
-        
-        h1 { font-size: 2.5rem; color: #fff; }
-        .subtitle { color: var(--primary); font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
-        
-        section { margin-bottom: 35px; page-break-inside: avoid; }
-        h2 { font-size: 1.5rem; border-left: 4px solid var(--primary); padding-left: 12px; margin-bottom: 20px; color: #fff; text-transform: uppercase; }
-        
-        .card { background: var(--card-bg); padding: 18px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #334155; }
-        h3 { color: var(--primary); font-size: 1.1rem; }
-        .date { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 5px; display: block; }
-        
-        .badge { background: #10b981; color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; margin-left: 8px; }
-        
-        .cert-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .cert-list li { font-size: 0.9rem; padding: 8px; background: #1e293b; border-radius: 5px; }
-        .cert-list i { color: #f59e0b; margin-right: 8px; }
+        /* Estilos para el PDF (Fondo blanco) */
+        .pdf-mode { background-color: white !important; color: #1a1a1a !important; padding: 20px !important; }
+        .pdf-mode h1, .pdf-mode h2, .pdf-mode h3 { color: #111 !important; }
+        .pdf-mode .card { background: #f9fafb !important; border: 1px solid #e5e7eb !important; color: #374151 !important; }
+        .pdf-mode .date { color: #6b7280 !important; }
+        .pdf-mode .subtitle { color: #2563eb !important; }
 
-        /* Botón Flotante para no ensuciar el PDF */
+        header { text-align: center; padding-bottom: 30px; border-bottom: 2px solid var(--primary); margin-bottom: 30px; }
+        .profile-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 15px; }
+        
+        h1 { font-size: 2.2rem; margin-bottom: 5px; }
+        .subtitle { color: var(--primary); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        
+        section { margin-bottom: 25px; page-break-inside: avoid; }
+        h2 { font-size: 1.3rem; border-bottom: 2px solid var(--primary); display: inline-block; margin-bottom: 15px; padding-right: 50px; }
+        
+        .card { background: var(--card-bg); padding: 15px; border-radius: 8px; margin-bottom: 10px; }
+        h3 { font-size: 1.05rem; margin-bottom: 2px; }
+        .date { font-size: 0.8rem; font-weight: 600; color: var(--text-dim); display: block; margin-bottom: 5px; }
+        
+        .badge { background: #10b981; color: white; font-size: 0.65rem; padding: 2px 6px; border-radius: 4px; margin-left: 5px; vertical-align: middle; }
+        
+        .grid-info { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .cert-list { list-style: none; font-size: 0.85rem; }
+        .cert-list li { margin-bottom: 5px; }
+        .cert-list i { color: #f59e0b; margin-right: 5px; }
+
         .btn-download {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            cursor: pointer;
-            border: none;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-download:hover { transform: scale(1.05); background: #2563eb; }
-
-        @media (max-width: 600px) {
-            .cert-list { grid-template-columns: 1fr; }
-            h1 { font-size: 1.8rem; }
+            position: fixed; bottom: 30px; right: 30px; background: #2563eb; color: white;
+            padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4); cursor: pointer; border: none; z-index: 1000;
         }
     </style>
 </head>
 <body>
 
     <button class="btn-download" onclick="generatePDF()">
-        <i class="fas fa-file-pdf"></i> Descargar CV en PDF
+        <i class="fas fa-file-pdf"></i> Descargar CV Profesional
     </button>
 
     <div id="cv-content">
         <header>
-            <img src="saulhernandez.jpg" alt="Saúl Hernández" class="profile-img">
             <h1>Saúl Hernández Barrientos</h1>
             <p class="subtitle">Ingeniero en Sistemas Computacionales</p>
-            <p style="color: var(--text-dim); font-size: 0.9rem;">
-                <i class="fas fa-envelope"></i> tu-email@ejemplo.com | <i class="fas fa-map-marker-alt"></i> México
+            <p style="font-size: 0.9rem; margin-top: 10px;">
+                <i class="fas fa-envelope"></i> cvitae24@github.io | <i class="fab fa-linkedin"></i> saúl-hernández-327b0b1ba
             </p>
         </header>
 
         <section>
             <h2>Experiencia Profesional</h2>
+            
             <div class="card">
                 <h3>Mesa de Ayuda - Cinemex <span class="badge">ACTUAL</span></h3>
-                <span class="date">Octubre 2025 - Presente | Grupo SICCOB</span>
-                <p>Soporte técnico integral y gestión de infraestructura crítica.</p>
+                <span class="date">2025 - Presente | Grupo SICCOB</span>
+                <p style="font-size: 0.9rem;">Soporte técnico y gestión de incidentes en infraestructura de cines.</p>
             </div>
+
             <div class="card">
                 <h3>Profesor de Tecnologías</h3>
                 <span class="date">Feb 2025 - Ago 2025 | Colegio Ignacio Allende</span>
             </div>
+
             <div class="card">
-                <h3>Soporte Técnico (BackOffice)</h3>
-                <span class="date">2012 - 2024 | Izzi Telecom</span>
+                <h3>Agente Telefónico Soporte Técnico (BackOffice)</h3>
+                <span class="date">2012 - 2024 | Izzi Telecom (Televisa)</span>
+                <p style="font-size: 0.9rem;">Atención a personal interno y análisis de bases de datos.</p>
+            </div>
+
+            <div class="card">
+                <h3>Encargado De Sistemas</h3>
+                <span class="date">2012 - 2012 | SURMAN Ecatepec</span>
+            </div>
+
+            <div class="card">
+                <h3>Help Desk</h3>
+                <span class="date">2011 - 2012 | SEDELEC</span>
             </div>
         </section>
 
-        <section>
-            <h2>Certificaciones Clave</h2>
-            <ul class="cert-list">
-                <li><i class="fas fa-check-circle"></i> Google IT Support Professional</li>
-                <li><i class="fas fa-check-circle"></i> Cisco IT Essentials</li>
-                <li><i class="fas fa-check-circle"></i> Diplomado en Sistemas</li>
-                <li><i class="fas fa-check-circle"></i> Linux Especialización</li>
-                <li><i class="fas fa-shield-alt"></i> Hacking Ético y Ciberseguridad</li>
-            </ul>
-        </section>
+        <div class="grid-info">
+            <section>
+                <h2>Certificaciones</h2>
+                <ul class="cert-list">
+                    <li><i class="fas fa-award"></i> Soporte TI de Google</li>
+                    <li><i class="fas fa-award"></i> IT Essentials (Cisco)</li>
+                    <li><i class="fas fa-award"></i> Diplomado Sistemas Informáticos</li>
+                    <li><i class="fas fa-award"></i> Hacking Ético y Ciberseguridad</li>
+                    <li><i class="fas fa-award"></i> Curso de Linux</li>
+                </ul>
+            </section>
 
-        <section>
-            <h2>Educación</h2>
-            <div class="card">
-                <h3>Ing. en Sistemas Computacionales</h3>
-                <span class="date">2021 - 2023 | Universidad ETAC (On-Aliat)</span>
-            </div>
-        </section>
+            <section>
+                <h2>Educación</h2>
+                <div class="card">
+                    <h3 style="font-size: 0.9rem;">Ing. en Sistemas Computacionales</h3>
+                    <span class="date">2021 - 2023 | Universidad ETAC</span>
+                </div>
+                <div class="card">
+                    <h3 style="font-size: 0.9rem;">Bachillerato en Informática</h3>
+                    <span class="date">2008 - 2010 | CETIS 119</span>
+                </div>
+            </section>
+        </div>
 
         <section>
             <h2>Habilidades Técnicas</h2>
-            <p style="color: var(--text-dim);">
-                HTML5, CSS3, JavaScript, SQL Server, Administración de Redes, Soporte de Hardware, Linux.
+            <p style="font-size: 0.9rem; letter-spacing: 0.5px;">
+                Desarrollo Web (HTML/CSS/JS), Redes Informáticas, SQL Server, Administración de Servidores Linux, Soporte de Hardware y Software.
             </p>
         </section>
     </div>
@@ -125,16 +132,22 @@
     <script>
         function generatePDF() {
             const element = document.getElementById('cv-content');
+            
+            // 1. Aplicamos clase "Modo PDF" (Fondo Blanco)
+            element.classList.add('pdf-mode');
+
             const options = {
-                margin: 10,
-                filename: 'CV_Saul_Hernandez.pdf',
+                margin: 5,
+                filename: 'CV_Saul_Hernandez_Barrientos.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, backgroundColor: '#0f172a' },
+                html2canvas: { scale: 2, useCORS: true },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
 
-            // Ejecutar la conversión
-            html2pdf().set(options).from(element).save();
+            // 2. Generamos el PDF y al terminar quitamos la clase para que la web siga siendo oscura
+            html2pdf().set(options).from(element).save().then(() => {
+                element.classList.remove('pdf-mode');
+            });
         }
     </script>
 </body>
