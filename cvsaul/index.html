@@ -15,14 +15,28 @@
         
         #cv-content { padding: 40px; max-width: 850px; margin: 0 auto; background-color: var(--bg); }
         
+        /* Ajustes para el PDF (Fondo Blanco) */
         .pdf-mode { background-color: white !important; color: #1a1a1a !important; padding: 20px !important; }
         .pdf-mode h1, .pdf-mode h2, .pdf-mode h3 { color: #111 !important; }
         .pdf-mode .card { background: #f9fafb !important; border: 1px solid #e5e7eb !important; color: #374151 !important; }
         .pdf-mode .date { color: #6b7280 !important; }
         .pdf-mode .subtitle { color: #2563eb !important; }
         .pdf-mode a { color: #1a1a1a !important; text-decoration: none; }
+        .pdf-mode .profile-img { border-color: #2563eb !important; }
 
         header { text-align: center; padding-bottom: 30px; border-bottom: 2px solid var(--primary); margin-bottom: 30px; }
+        
+        /* Contenedor de la foto */
+        .profile-img { 
+            width: 140px; 
+            height: 140px; 
+            border-radius: 50%; 
+            border: 4px solid var(--primary); 
+            margin-bottom: 15px; 
+            object-fit: cover;
+            display: inline-block;
+        }
+
         h1 { font-size: 2.2rem; margin-bottom: 5px; }
         .subtitle { color: var(--primary); font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         
@@ -58,6 +72,7 @@
 
     <div id="cv-content">
         <header>
+            <img src="saulhernandez.jpg" alt="Saúl Hernández" class="profile-img">
             <h1>Saúl Hernández Barrientos</h1>
             <p class="subtitle">Ingeniero en Sistemas Computacionales</p>
             <p style="font-size: 0.9rem; margin-top: 10px;">
@@ -139,7 +154,12 @@
                 margin: 8,
                 filename: 'CV_Saul_Hernandez_Barrientos.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true },
+                html2canvas: { 
+                    scale: 2, 
+                    useCORS: true,
+                    logging: false,
+                    letterRendering: true
+                },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
 
