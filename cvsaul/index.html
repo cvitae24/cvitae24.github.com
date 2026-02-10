@@ -7,216 +7,102 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #3b82f6;
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        header {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-            padding: 20px;
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 4px solid var(--primary);
-            margin-bottom: 20px;
-            object-fit: cover;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-        }
-
-        h1 { font-size: 3rem; margin-bottom: 10px; }
-        .subtitle { color: var(--primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 20px; }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        section { margin-bottom: 60px; }
-        h2 { 
-            font-size: 2rem; 
-            border-left: 5px solid var(--primary); 
-            padding-left: 15px; 
-            margin-bottom: 30px; 
-        }
-
-        /* Tarjetas de Experiencia y Educación */
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { color: var(--primary); margin-bottom: 5px; }
-        .date { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 10px; display: block; }
-
-        /* Habilidades */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
-        }
-        .skill-item {
-            background: #334155;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        /* Proyectos */
-        .project-card {
-            background: linear-gradient(145deg, #1e293b, #0f172a);
-            border: 1px solid #334155;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-        }
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 15px;
-            transition: 0.3s;
-        }
-        .btn:hover { opacity: 0.9; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4); }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            border-top: 1px solid #334155;
-            color: var(--text-dim);
-        }
-
-        .social-links a {
-            color: var(--text-main);
-            font-size: 1.8rem;
-            margin: 0 15px;
-            transition: 0.3s;
-        }
-        .social-links a:hover { color: var(--primary); }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .subtitle { font-size: 1.2rem; }
-        }
+        :root { --primary: #3b82f6; --bg: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-dim: #94a3b8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text-main); line-height: 1.6; }
+        header { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); padding: 20px; }
+        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 20px; object-fit: cover; }
+        h1 { font-size: 2.8rem; }
+        .subtitle { color: var(--primary); font-size: 1.4rem; font-weight: 600; margin-bottom: 20px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        section { margin-bottom: 50px; }
+        h2 { font-size: 1.8rem; border-left: 5px solid var(--primary); padding-left: 15px; margin-bottom: 25px; }
+        .card { background: var(--card-bg); padding: 20px; border-radius: 12px; margin-bottom: 15px; border: 1px solid transparent; transition: 0.3s; }
+        .card:hover { border-color: var(--primary); transform: translateY(-3px); }
+        .card.active { border-left: 4px solid #10b981; }
+        .badge { background: #10b981; color: white; font-size: 0.7rem; padding: 3px 8px; border-radius: 5px; vertical-align: middle; margin-left: 10px; }
+        h3 { color: var(--primary); }
+        .date { font-size: 0.85rem; color: var(--text-dim); display: block; margin-bottom: 8px; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+        .skill-item { background: #334155; padding: 10px; border-radius: 8px; text-align: center; font-size: 0.85rem; }
+        .cert-list { list-style: none; }
+        .cert-list li { background: var(--card-bg); margin-bottom: 10px; padding: 15px; border-radius: 10px; display: flex; align-items: center; }
+        .cert-list i { color: #f59e0b; margin-right: 15px; font-size: 1.2rem; }
+        .btn { display: inline-block; background: var(--primary); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        footer { text-align: center; padding: 40px; color: var(--text-dim); border-top: 1px solid #334155; }
+        .social-links a { color: var(--text-main); font-size: 1.5rem; margin: 0 10px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div>
-            <img src="saulhernandez.jpg" alt="Saúl Hernández" class="profile-img">
-            <h1>Saúl Hernández B.</h1>
-            <p class="subtitle">Ingeniero en Sistemas Computacionales</p>
-            <p style="max-width: 600px; margin: 0 auto 30px; color: var(--text-dim);">
-                Especialista en Soporte Técnico con 11 años de experiencia. 
-                Apasionado por el Desarrollo Web y la Infraestructura de Redes.
-            </p>
-            <a href="cv.pdf" class="btn" download><i class="fas fa-file-download"></i> Descargar CV</a>
-        </div>
-    </header>
-
-    <div class="container">
-        
-        <section id="experiencia">
-            <h2>Experiencia Profesional</h2>
-            
-            <div class="card">
-                <h3>Profesor de Tecnologías</h3>
-                <span class="date">Feb 2025 - Ago 2025 | Colegio Ignacio Allende</span>
-                <p>Enseñanza de informática y nuevas tecnologías a nivel académico.</p>
-            </div>
-
-            <div class="card">
-                <h3>Agente KAD</h3>
-                <span class="date">2024 - 2025 | DHL Express México</span>
-                <p>Gestión de procesos operativos y atención especializada.</p>
-            </div>
-
-            <div class="card">
-                <h3>Soporte Técnico (BackOffice)</h3>
-                <span class="date">2012 - 2024 | Izzi Telecom</span>
-                <p>12 años brindando soluciones técnicas complejas, análisis de base de datos y atención al personal interno.</p>
-            </div>
-        </section>
-
-        <section id="habilidades">
-            <h2>Habilidades Técnicas</h2>
-            <div class="skills-grid">
-                <div class="skill-item"><i class="fab fa-html5"></i> HTML5</div>
-                <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS3</div>
-                <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
-                <div class="skill-item"><i class="fas fa-database"></i> SQL / BD</div>
-                <div class="skill-item"><i class="fab fa-linux"></i> Linux</div>
-                <div class="skill-item"><i class="fas fa-shield-alt"></i> Ciberseguridad</div>
-                <div class="skill-item"><i class="fas fa-network-wired"></i> Redes</div>
-                <div class="skill-item"><i class="fab fa-google"></i> Google IT Support</div>
-            </div>
-        </section>
-
-        <section id="proyectos">
-            <h2>Proyectos Destacados</h2>
-            <div class="project-card">
-                <i class="fas fa-couch" style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;"></i>
-                <h3>Tienda de Muebles</h3>
-                <p>Desarrollo web responsivo utilizando HTML, CSS y despliegue en Netlify.</p>
-                <a href="https://sportafolio1.netlify.app/" target="_blank" class="btn">Ver Proyecto</a>
-            </div>
-        </section>
-
-        <section id="educacion">
-            <h2>Educación</h2>
-            <div class="card">
-                <h3>Ingeniería en Sistemas Computacionales</h3>
-                <span class="date">2021 - 2023 | Universidad ETAC</span>
-            </div>
-            <div class="card">
-                <h3>Bachillerato Tecnológico en Informática</h3>
-                <span class="date">2008 - 2010 | CETIS 119</span>
-            </div>
-        </section>
-
+<header>
+    <div>
+        <img src="saulhernandez.jpg" alt="Saúl Hernández" class="profile-img">
+        <h1>Saúl Hernández B.</h1>
+        <p class="subtitle">Ingeniero en Sistemas Computacionales</p>
+        <a href="cv.pdf" class="btn" download><i class="fas fa-file-download"></i> Descargar CV PDF</a>
     </div>
+</header>
 
-    <footer>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/sa%C3%BAl-hern%C3%A1ndez-327b0b1ba/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/cvitae24" target="_blank"><i class="fab fa-github"></i></a>
+<div class="container">
+    <section id="experiencia">
+        <h2>Experiencia Profesional</h2>
+        
+        <div class="card active">
+            <h3>Mesa de Ayuda - Cinemex <span class="badge">ACTUAL</span></h3>
+            <span class="date">Actualidad | Grupo SICCOB</span>
+            <p>Soporte técnico especializado y gestión de incidencias para la infraestructura tecnológica de complejos Cinemex.</p>
         </div>
-        <p style="margin-top: 20px;">© 2025 Saúl Hernández - Hecho con ❤️ para la Web</p>
-    </footer>
+
+        <div class="card">
+            <h3>Profesor de Tecnologías</h3>
+            <span class="date">Feb 2025 - Ago 2025 | Colegio Ignacio Allende</span>
+        </div>
+
+        <div class="card">
+            <h3>Soporte Técnico (BackOffice)</h3>
+            <span class="date">2012 - 2024 | Izzi Telecom</span>
+            <p>Análisis de base de datos y soporte nivel 2 a personal interno.</p>
+        </div>
+    </section>
+
+    <section id="certificaciones">
+        <h2>Certificaciones</h2>
+        <ul class="cert-list">
+            <li><i class="fas fa-certificate"></i> Certificación en Soporte de TI de Google</li>
+            <li><i class="fas fa-certificate"></i> IT Essentials (Cisco)</li>
+            <li><i class="fas fa-certificate"></i> Diplomado Técnico en Sistemas Informáticos</li>
+            <li><i class="fas fa-user-shield"></i> Curso de Hacking Ético y Ciberseguridad</li>
+            <li><i class="fab fa-linux"></i> Especialización en Linux</li>
+        </ul>
+    </section>
+
+    <section id="habilidades">
+        <h2>Habilidades</h2>
+        <div class="skills-grid">
+            <div class="skill-item"><i class="fab fa-html5"></i> HTML5 / CSS3</div>
+            <div class="skill-item"><i class="fas fa-network-wired"></i> Redes / CCNA</div>
+            <div class="skill-item"><i class="fas fa-database"></i> SQL Server</div>
+            <div class="skill-item"><i class="fas fa-microchip"></i> Hardware</div>
+        </div>
+    </section>
+
+    <section id="educacion">
+        <h2>Educación</h2>
+        <div class="card">
+            <h3>Ingeniería en Sistemas Computacionales</h3>
+            <span class="date">2021 - 2023 | Universidad ETAC (Aliat)</span>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/sa%C3%BAl-hern%C3%A1ndez-327b0b1ba/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/cvitae24" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+    <p>© 2025 Saúl Hernández</p>
+</footer>
 
 </body>
 </html>
